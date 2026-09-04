@@ -27,8 +27,8 @@ const SECTIONS = [
         body: "Patients view upcoming visits and past consultations whenever they need to.",
       },
       {
-        title: "Calendar sync (coming soon)",
-        body: "Appointments will sync automatically to patients' and doctors' personal calendars via Google Calendar & iCal.",
+        title: "Calendar sync",
+        body: "Appointments can be synced to patients' and doctors' personal calendars via Google Calendar & iCal.",
       },
     ],
   },
@@ -47,6 +47,10 @@ const SECTIONS = [
       {
         title: "Full schedule control",
         body: "Manage shifts, patient queues and appointment flow without the back-and-forth.",
+      },
+      {
+        title: "Your daily summary",
+        body: "A schedule overview and real-time cancellation updates sent straight to your WhatsApp.",
       },
     ],
   },
@@ -73,16 +77,17 @@ const SECTIONS = [
     title: "Keep patients informed, automatically",
     items: [
       {
+        title: "WhatsApp integration",
+        body: "Booking confirmations, reminders and cancellation alerts reach patients instantly on WhatsApp and email — the moment they happen, on the channel patients actually open.",
+        highlight: true,
+      },
+      {
         title: "Instant booking confirmations",
         body: "Patients get clinic details, directions and appointment times the moment they book.",
       },
       {
         title: "Smart reminders",
         body: "Automated reminders and instant alerts for any changes or cancellations.",
-      },
-      {
-        title: "Your daily summary",
-        body: "A schedule overview and real-time cancellation updates sent straight to your WhatsApp.",
       },
     ],
   },
@@ -131,31 +136,42 @@ const SECTIONS = [
 export default function FeaturesPage() {
   return (
     <Container className="flex flex-col gap-16 py-16 sm:py-20">
-      <SectionHeading
-        eyebrow="Features"
-        title="Every part of your front office, in one platform"
-        lede="Booking, scheduling, communication and records — built around how a clinic actually runs its day."
-      />
+      <div className="flex flex-col gap-6">
+        <SectionHeading
+          eyebrow="Features"
+          title="Every part of your front office, in one platform"
+          lede="Booking, scheduling, communication and records — built around how a clinic actually runs its day."
+        />
+        <Callout eyebrow="Privacy, built in">
+          We never sell your patients&rsquo; data — not to advertisers, not to data brokers, not to
+          anyone. Privacy is designed into every feature below, from the first schema, not added
+          on afterward.
+        </Callout>
+      </div>
 
       {SECTIONS.map((section) => (
         <div key={section.title} className="flex flex-col gap-6">
           <SectionHeading eyebrow={section.eyebrow} title={section.title} />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {section.items.map((item) => (
-              <div key={item.title} className="flex flex-col gap-1.5">
-                <h3 className="font-display text-base font-semibold text-ink">{item.title}</h3>
-                <p className="text-sm text-ink-2">{item.body}</p>
-              </div>
-            ))}
+            {section.items.map((item) =>
+              item.highlight ? (
+                <div
+                  key={item.title}
+                  className="flex flex-col gap-1.5 rounded border border-rule border-l-[3px] border-l-accent bg-surface p-5 sm:col-span-2 lg:col-span-1"
+                >
+                  <h3 className="font-display text-base font-semibold text-ink">{item.title}</h3>
+                  <p className="text-sm text-ink-2">{item.body}</p>
+                </div>
+              ) : (
+                <div key={item.title} className="flex flex-col gap-1.5">
+                  <h3 className="font-display text-base font-semibold text-ink">{item.title}</h3>
+                  <p className="text-sm text-ink-2">{item.body}</p>
+                </div>
+              )
+            )}
           </div>
         </div>
       ))}
-
-      <Callout eyebrow="Privacy, built in">
-        Every feature above runs on patient data that stays yours. We never sell your patients&rsquo;
-        data — not to advertisers, not to data brokers, not to anyone. Privacy is designed into
-        SwasthyaConnect from the first schema, not added on afterward.
-      </Callout>
     </Container>
   );
 }

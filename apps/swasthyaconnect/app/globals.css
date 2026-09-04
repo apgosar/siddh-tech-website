@@ -4,6 +4,63 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * SwasthyaConnect brand override ("Teal Trust" palette, see
+ * SwasthyaConnectBrandGuide.md) — redefines the shared tokens for this app
+ * only, so every @siddh/ui component (Header, Button, Badge, Callout...)
+ * picks up the real brand colors and type without being rewritten. Kept
+ * here rather than in packages/tokens so corporate and neev are unaffected.
+ */
+:root {
+  --ink: #16323a;
+  --ink-2: #5c7a80;
+  --muted: #5c7a80;
+  --surface: #ffffff;
+  --surface-2: #eaf6f5;
+  --ground: #f2faf9;
+  --rule: #bfe3e6;
+  --rule-strong: #7fbec4;
+
+  --accent: #02c39a;
+  --accent-soft: #eaf6f5;
+  --accent-ink: #013442;
+
+  --f-display: "Lora", Cambria, Georgia, "Times New Roman", serif;
+  --f-body: "Work Sans", Calibri, "Segoe UI", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #eaf6f5;
+    --ink-2: #bfe3e6;
+    --muted: #7fbec4;
+    --surface: #0a2229;
+    --surface-2: #0f2a30;
+    --ground: #071b21;
+    --rule: #17414a;
+    --rule-strong: #1f545e;
+
+    --accent: #02c39a;
+    --accent-soft: #013442;
+    --accent-ink: #bfe3e6;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink: #eaf6f5;
+  --ink-2: #bfe3e6;
+  --muted: #7fbec4;
+  --surface: #0a2229;
+  --surface-2: #0f2a30;
+  --ground: #071b21;
+  --rule: #17414a;
+  --rule-strong: #1f545e;
+
+  --accent: #02c39a;
+  --accent-soft: #013442;
+  --accent-ink: #bfe3e6;
+}
+
 @layer base {
   body {
     background-color: var(--ground);
