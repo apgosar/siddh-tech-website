@@ -9,7 +9,7 @@ const nextConfig = {
   basePath: "/swasthyaconnect",
   output: "standalone",
   outputFileTracingRoot: path.join(__dirname, "../../"),
-  transpilePackages: ["@siddh/ui", "@siddh/tokens", "@siddh/config"],
+  transpilePackages: ["@siddh/ui", "@siddh/tokens", "@siddh/config", "@siddh/mail"],
 };
 
 export default nextConfig;

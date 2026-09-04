@@ -22,7 +22,7 @@ const nextConfig = {
   // location, which can pick the wrong ancestor in a monorepo and silently
   // leave workspace packages (@siddh/ui etc.) out of the traced build.
   outputFileTracingRoot: path.join(__dirname, "../../"),
-  transpilePackages: ["@siddh/ui", "@siddh/tokens", "@siddh/config"],
+  transpilePackages: ["@siddh/ui", "@siddh/tokens", "@siddh/config", "@siddh/mail"],
   async rewrites() {
     return [
       { source: "/neev", destination: `${NEEV_ORIGIN}/neev` },

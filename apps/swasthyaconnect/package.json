@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@siddh/config": "*",
+    "@siddh/mail": "*",
     "@siddh/tokens": "*",
     "@siddh/ui": "*",
     "next": "^15.0.3",

@@ -1,22 +1,22 @@
 import { sendNotification } from "@siddh/mail";
 
-export async function sendContactNotification(entry: {
+export async function sendDemoRequest(entry: {
   name: string;
   email: string;
-  product: string;
+  clinic: string;
   message: string;
 }) {
   const to = process.env.CONTACT_NOTIFY_TO || process.env.GMAIL_USER || "";
 
   await sendNotification({
     to,
-    fromName: "Siddh Tech Contact form",
-    subject: `New contact form message — ${entry.product}`,
+    fromName: "SwasthyaConnect Contact Form",
+    subject: `New walkthrough request — ${entry.clinic || entry.name}`,
     replyTo: entry.email,
     text: [
       `Name: ${entry.name}`,
       `Email: ${entry.email}`,
-      `Product: ${entry.product}`,
+      `Clinic: ${entry.clinic}`,
       "",
       entry.message,
     ].join("\n"),

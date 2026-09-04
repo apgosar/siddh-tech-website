@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Container, SectionHeading, Button } from "@siddh/ui";
+import { redirect } from "next/navigation";
+import { Container, SectionHeading, Callout } from "@siddh/ui";
 import { getProduct } from "@siddh/config";
+import { sendDemoRequest } from "../../lib/mail";
 
 const product = getProduct("swasthyaconnect");
 
@@ -24,7 +26,34 @@ const POINTS = [
   },
 ];
 
-export default function DemoPage() {
+async function submitDemoRequest(formData: FormData) {
+  "use server";
+  const entry = {
+    name: String(formData.get("name") ?? ""),
+    email: String(formData.get("email") ?? ""),
+    clinic: String(formData.get("clinic") ?? ""),
+    message: String(formData.get("message") ?? ""),
+  };
+
+  try {
+    await sendDemoRequest(entry);
+  } catch (error) {
+    // Notification email failing shouldn't break the visitor's experience —
+    // but it must not fail silently, since a misconfigured GMAIL_APP_PASSWORD
+    // would otherwise mean requests vanish with no record anywhere.
+    console.error("[demo] failed to send notification email", error);
+  }
+
+  redirect("/demo?sent=1");
+}
+
+export default async function DemoPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ sent?: string }>;
+}) {
+  const sent = (await searchParams).sent === "1";
+
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
@@ -42,13 +71,67 @@ export default function DemoPage() {
         ))}
       </div>
 
-      <div className="flex flex-col items-start gap-4 rounded border border-rule bg-surface p-8 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-measure text-ink-2">
-          Tell us a bit about your clinic and we&rsquo;ll get back to you to schedule your
-          walkthrough — mention SwasthyaConnect in the message.
-        </p>
-        <Button href="/contact">Request a walkthrough</Button>
-      </div>
+      {sent ? (
+        <Callout eyebrow="Request sent">
+          Thanks — we&rsquo;ll get back to you shortly to schedule your walkthrough.
+        </Callout>
+      ) : (
+        <form action={submitDemoRequest} className="flex max-w-measure flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="name" className="font-mono text-xs uppercase tracking-wide text-muted">
+              Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              className="rounded border border-rule bg-surface px-3 py-2.5 text-ink outline-none focus-visible:border-accent"
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="font-mono text-xs uppercase tracking-wide text-muted">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              className="rounded border border-rule bg-surface px-3 py-2.5 text-ink outline-none focus-visible:border-accent"
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="clinic" className="font-mono text-xs uppercase tracking-wide text-muted">
+              Clinic name
+            </label>
+            <input
+              id="clinic"
+              name="clinic"
+              type="text"
+              required
+              className="rounded border border-rule bg-surface px-3 py-2.5 text-ink outline-none focus-visible:border-accent"
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="message" className="font-mono text-xs uppercase tracking-wide text-muted">
+              Anything else we should know?
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              className="rounded border border-rule bg-surface px-3 py-2.5 text-ink outline-none focus-visible:border-accent"
+            />
+          </div>
+          <button
+            type="submit"
+            className="inline-flex w-fit items-center justify-center gap-2 rounded bg-ink px-4 py-2.5 font-display text-sm font-semibold text-surface transition-colors hover:bg-ink-2"
+          >
+            Request a walkthrough
+          </button>
+        </form>
+      )}
     </Container>
   );
 }
