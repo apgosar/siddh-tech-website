@@ -1,0 +1,26 @@
+# Builds one app's image and pushes it to Artifact Registry. Which app is
+# controlled by the _APP substitution (corporate / neev / swasthyaconnect) —
+# see DEPLOY.md for the full command. Building via Cloud Build (rather than
+# local `docker build`) means this works even without Docker installed or
+# running on your own machine.
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "--build-arg", "APP=${_APP}",
+        "--build-arg", "NEEV_ORIGIN=${_NEEV_ORIGIN}",
+        "--build-arg", "SWASTHYACONNECT_ORIGIN=${_SWASTHYACONNECT_ORIGIN}",
+        "-t", "${_IMAGE}",
+        ".",
+      ]
+images:
+  - "${_IMAGE}"
+options:
+  logging: CLOUD_LOGGING_ONLY
+# Only _APP and _IMAGE are required (see DEPLOY.md). _NEEV_ORIGIN and
+# _SWASTHYACONNECT_ORIGIN only matter when _APP=corporate — default to empty
+# so building neev/swasthyaconnect doesn't need to pass them.
+substitutions:
+  _NEEV_ORIGIN: ""
+  _SWASTHYACONNECT_ORIGIN: ""

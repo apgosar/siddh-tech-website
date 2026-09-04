@@ -1,0 +1,27 @@
+<svg viewBox="0 0 496 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    Built from measured Archivo 700 advances at font-size 48: "siddh" 126.768,
+    "t" 16.416, "ech" 84.432 — confirmed to sum exactly to "siddhtech"'s own
+    advance (227.616 either way), so this reproduces the live wordmark's
+    spacing exactly rather than approximating it.
+    Icon bottom (y=56) sits on the text baseline (y=56) by construction —
+    same alignment validated for the live component.
+    "SOLUTIONS" width (161.2) is also measured, not guessed: IBM Plex Mono
+    500 raw advance 140.4 at font-size 26, plus 8×2.6 for the 9 letters'
+    0.1em letter-spacing.
+  -->
+  <svg x="0" y="8" width="56.89" height="48" viewBox="0 0 64 54">
+    <circle cx="32" cy="9" r="5" fill="#14181A"/>
+    <rect x="18" y="25" width="28" height="7" fill="#14181A"/>
+    <path d="M8 38 A26 26 0 0 0 56 38 A44.643 44.643 0 0 1 8 38 Z" fill="#14181A"/>
+  </svg>
+  <text x="70.89" y="56" font-family="Archivo, sans-serif" font-weight="700" font-size="48" fill="#14181A">siddh</text>
+  <text x="214.074" y="56" font-family="Archivo, sans-serif" font-weight="700" font-size="48" fill="#14181A">ech</text>
+  <!-- arrow-t, replacing the "t" between "siddh" and "ech" -->
+  <rect x="201.786" y="18.56" width="8.16" height="37.44" fill="#14181A"/>
+  <rect x="197.706" y="38.48" width="16.32" height="4.08" fill="#14181A"/>
+  <path d="M205.866 2.24 L215.466 18.56 L196.266 18.56 Z" fill="#14181A"/>
+  <!-- divider + "Solutions" suffix, in the secondary/muted tone -->
+  <rect x="314.506" y="8" width="1.5" height="48" fill="#7A8588"/>
+  <text x="330.006" y="47" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="26" letter-spacing="2.6" fill="#7A8588">SOLUTIONS</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg viewBox="0 0 460 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    Icon scaled to 80px tall and centered over "siddhtech" specifically
+    (icon center x = 133.808 = siddhtech's own horizontal center), not over
+    the wider line including "| SOLUTIONS" — the suffix is secondary and
+    trails to the right, the way a subsidiary tag sits beside a primary
+    mark rather than recentering it.
+    Gap below the icon is sized against the arrow's actual apex, not
+    normal letter-ascender height, since the arrow is the tallest element
+    in the word.
+  -->
+  <svg x="86.408" y="12" width="94.8" height="80" viewBox="0 0 64 54">
+    <circle cx="32" cy="9" r="5" fill="#14181A"/>
+    <rect x="18" y="25" width="28" height="7" fill="#14181A"/>
+    <path d="M8 38 A26 26 0 0 0 56 38 A44.643 44.643 0 0 1 8 38 Z" fill="#14181A"/>
+  </svg>
+  <text x="20" y="162" font-family="Archivo, sans-serif" font-weight="700" font-size="48" fill="#14181A">siddh</text>
+  <text x="163.184" y="162" font-family="Archivo, sans-serif" font-weight="700" font-size="48" fill="#14181A">ech</text>
+  <rect x="150.896" y="124.56" width="8.16" height="37.44" fill="#14181A"/>
+  <rect x="146.816" y="144.48" width="16.32" height="4.08" fill="#14181A"/>
+  <path d="M154.976 108.24 L164.576 124.56 L145.376 124.56 Z" fill="#14181A"/>
+  <rect x="263.616" y="114" width="1.5" height="48" fill="#7A8588"/>
+  <text x="279.116" y="162" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="26" letter-spacing="2.6" fill="#7A8588">SOLUTIONS</text>
+</svg>

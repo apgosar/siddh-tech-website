@@ -1,0 +1,132 @@
+/*
+  Siddh Tech design tokens.
+  One neutral scale and one type scale shared by every app in the monorepo.
+  Each app sets `data-brand` on <html> to select its accent triad; everything
+  else (spacing, radii, type, neutrals) stays identical across apps so a new
+  product theme is a six-line addition, not a redesign.
+*/
+
+:root {
+  /* neutrals — light */
+  --ground: #edefee;
+  --surface: #fbfcfb;
+  --surface-2: #e4e8e7;
+  --ink: #15191b;
+  --ink-2: #3d474b;
+  --muted: #6b767a;
+  --rule: #cdd4d3;
+  --rule-strong: #a9b4b3;
+
+  /* accent triads — one per brand, always defined regardless of data-brand
+     so an app can reference a sibling brand's color (e.g. the products grid
+     on the corporate site) without importing that brand's theme. */
+  --corporate-accent: #1b4d5a;
+  --corporate-accent-soft: #dce9ea;
+  --corporate-accent-ink: #0e2c34;
+
+  --neev-accent: #9c6224;
+  --neev-accent-soft: #f3e6d6;
+  --neev-accent-ink: #5c3a15;
+
+  --swasthya-accent: #b03a5b;
+  --swasthya-accent-soft: #f6dee4;
+  --swasthya-accent-ink: #6c2337;
+
+  --flag: #7a5a0f;
+  --flag-soft: #f1e9cf;
+
+  /* the active brand's triad — this is what components should read */
+  --accent: var(--corporate-accent);
+  --accent-soft: var(--corporate-accent-soft);
+  --accent-ink: var(--corporate-accent-ink);
+
+  /* type */
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  /* layout */
+  --measure: 68ch;
+  --radius: 2px;
+}
+
+/*
+ * Brand accent selection — set data-brand="neev" | "swasthyaconnect" on
+ * <html> to theme a whole app, or on any nested element (e.g. a ProductCard
+ * on a mixed page like /products) to tint just that element. Deliberately
+ * NOT scoped to :root so both cases work — an element-scoped selector here
+ * would silently no-op for the nested case.
+ */
+[data-brand="neev"] {
+  --accent: var(--neev-accent);
+  --accent-soft: var(--neev-accent-soft);
+  --accent-ink: var(--neev-accent-ink);
+}
+[data-brand="swasthyaconnect"] {
+  --accent: var(--swasthya-accent);
+  --accent-soft: var(--swasthya-accent-soft);
+  --accent-ink: var(--swasthya-accent-ink);
+}
+
+/* dark mode — system preference, unless an explicit choice overrides it */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0e1214;
+    --surface: #161b1e;
+    --surface-2: #1f2629;
+    --ink: #e7ebea;
+    --ink-2: #c0c9c8;
+    --muted: #8d9a9c;
+    --rule: #2b3438;
+    --rule-strong: #3e494d;
+
+    --corporate-accent: #79bdc9;
+    --corporate-accent-soft: #12292f;
+    --corporate-accent-ink: #d7eef1;
+
+    --neev-accent: #d89e56;
+    --neev-accent-soft: #2c2115;
+    --neev-accent-ink: #f3dcb8;
+
+    --swasthya-accent: #e58aa0;
+    --swasthya-accent-soft: #2e1820;
+    --swasthya-accent-ink: #f8d2dc;
+
+    --flag: #cfae5a;
+    --flag-soft: #2a2414;
+  }
+}
+
+/* explicit dark toggle wins over system preference */
+:root[data-theme="dark"] {
+  --ground: #0e1214;
+  --surface: #161b1e;
+  --surface-2: #1f2629;
+  --ink: #e7ebea;
+  --ink-2: #c0c9c8;
+  --muted: #8d9a9c;
+  --rule: #2b3438;
+  --rule-strong: #3e494d;
+
+  --corporate-accent: #79bdc9;
+  --corporate-accent-soft: #12292f;
+  --corporate-accent-ink: #d7eef1;
+
+  --neev-accent: #d89e56;
+  --neev-accent-soft: #2c2115;
+  --neev-accent-ink: #f3dcb8;
+
+  --swasthya-accent: #e58aa0;
+  --swasthya-accent-soft: #2e1820;
+  --swasthya-accent-ink: #f8d2dc;
+
+  --flag: #cfae5a;
+  --flag-soft: #2a2414;
+}
+
+/*
+ * No dark-mode re-resolution needed here: --neev-accent and
+ * --swasthya-accent themselves are redefined inside the dark blocks above,
+ * and the unscoped [data-brand="neev"] rule reads them via var() at
+ * compute time, so it picks up the dark values automatically.
+ */

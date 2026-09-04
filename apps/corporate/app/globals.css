@@ -1,0 +1,39 @@
+@import "@siddh/tokens/css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--f-display);
+  }
+
+  a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@siddh/ui",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "react": "^18.3.0"
+  },
+  "dependencies": {
+    "@siddh/config": "*"
+  }
+}

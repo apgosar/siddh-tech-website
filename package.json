@@ -1,0 +1,28 @@
+{
+  "name": "siddh-web",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:corporate": "turbo run dev --filter=@siddh/corporate",
+    "dev:neev": "turbo run dev --filter=@siddh/neev",
+    "dev:swasthyaconnect": "turbo run dev --filter=@siddh/swasthyaconnect",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rimraf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2.1.3",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3"
+  },
+  "packageManager": "npm@11.11.0",
+  "engines": {
+    "node": ">=20"
+  }
+}
