@@ -1,5 +1,20 @@
 # Deploying to Cloud Run
 
+**Day to day, just run [`deploy.ps1`](deploy.ps1)** — it does everything
+below (build, deploy, correct region per app, the origin build-args
+corporate needs, Gmail secret wiring) with one command, and it passes
+`-project` explicitly on every `gcloud` call so it always targets
+`siddh-tech-website` regardless of whatever project `gcloud config` happens
+to have active on your machine:
+
+```powershell
+./deploy.ps1                        # build + deploy all three, in the required order
+./deploy.ps1 -App swasthyaconnect   # just one app, after a content change
+```
+
+The rest of this doc explains what that script is actually doing and why —
+useful for debugging, or if you ever need to run a step by hand.
+
 Three independent services — `siddh-corporate`, `siddh-neev`,
 `siddh-swasthyaconnect` — one per app in the monorepo. `siddh-corporate` is
 the only one the public domain points at; it proxies `/neev` and
