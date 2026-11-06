@@ -4,18 +4,93 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Neev CMS brand ("Night shift"): the deck's navy and gold, committed to dark.
+ * The product's own screens are dark, so the site is too; screenshots sit on
+ * the page instead of floating on a white card. Redefines the shared tokens for
+ * this app only, so every @siddh/ui component (Header, Footer, Button, Badge,
+ * Callout...) picks the brand up without being rewritten, and corporate and
+ * SwasthyaConnect are untouched.
+ *
+ * Selector is `:root[data-brand="neev"]` (specificity 0,2,0), which ties with the
+ * shared tokens' dark-mode block and wins because it comes later.
+ */
+:root[data-brand="neev"] {
+  color-scheme: dark;
+
+  --ground: #0b1b2e; /* deep navy */
+  --surface: #0f2a4a; /* navy: panels, header, footer */
+  --surface-2: #153356;
+  --ink: #eef3fa;
+  --ink-2: #c3d2e6;
+  --muted: #92a8c6; /* 6.6:1 on ground */
+  --rule: #1e3d63;
+  --rule-strong: #2b5686;
+
+  --accent: #e3b54f; /* lit-window gold */
+  --accent-soft: #2f2b1f;
+  --accent-ink: #f3d58a;
+
+  --flag: #f59e0b;
+  --flag-soft: #2d2208;
+
+  /* primary button: gold fill, navy text (11:1) */
+  --cta: #e3b54f;
+  --cta-hover: #edc668;
+  --on-cta: #0b1b2e;
+
+  /* the app's own status colours, reused so the site's legends match the product */
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+  --info: #3b82f6;
+
+  --f-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --f-body: var(--font-inter), "Segoe UI", system-ui, sans-serif;
+  --f-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --radius: 6px;
+  --measure: 66ch;
+}
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--ground);
     color: var(--ink);
     font-family: var(--f-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4 {
     font-family: var(--f-display);
   }
-  a:focus-visible, button:focus-visible {
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 3px;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--on-cta);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+@layer components {
+  /* Indian-rupee amounts and day counts line up in columns. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  /* FAQ disclosure marker */
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
   }
 }

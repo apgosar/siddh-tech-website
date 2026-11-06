@@ -1,68 +1,64 @@
 import type { Metadata } from "next";
-import { Container, SectionHeading, Callout, Badge } from "@siddh/ui";
+import { Container, SectionHeading } from "@siddh/ui";
+import { SITE } from "@siddh/config";
 
 export const metadata: Metadata = {
-  title: "Trust & Security",
-  description: "How Siddh Tech Solutions handles data, compliance and security across its products.",
+  title: "Trust and security",
+  description: `How ${SITE.name} handles customer data: Neev CMS runs on your own server or private cloud with PAN and Aadhaar stored encrypted, and we keep no access after handover.`,
 };
+
+const BLOCKS = [
+  {
+    brand: "neev",
+    h: "Neev CMS",
+    items: [
+      "Runs on your own server or private cloud.",
+      "PAN and Aadhaar are stored encrypted.",
+      "Roles (Super Admin, Admin, Sales, Viewer) limit who sees what, and an audit log records every important change.",
+      "At handover your admin gets full rights and sets their own password. After handover we keep no access to your account or data.",
+    ],
+    more: { label: "Neev CMS security and handover", href: "/neev/security" },
+  },
+  {
+    brand: "swasthyaconnect",
+    h: "SwasthyaConnect",
+    items: ["We never sell your patients' data, ever. Privacy is at the heart of the design."],
+    more: { label: "SwasthyaConnect features", href: "/swasthyaconnect/features" },
+  },
+];
 
 export default function TrustPage() {
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
+        level={1}
         eyebrow="Trust centre"
-        title="Data handling, compliance and security"
-        lede="Answers to the questions enterprise buyers and procurement teams ask first — shared across products, with a note where a product's obligations differ."
+        title="Data handling and security"
+        lede="What we do today, stated plainly. Where a product's obligations differ, each has its own section."
       />
 
-      <div id="security" className="flex flex-col gap-4">
-        <h3 className="font-display text-lg font-semibold text-ink">Data protection</h3>
-        <Callout eyebrow="Fill in before this page is public">
-          State plainly: where data is hosted (region/data centre), the DPDP
-          Act 2023 posture, consent handling, breach-notification commitment,
-          and data retention/deletion policy. Do not publish a compliance
-          claim here that hasn't been verified — an inaccurate claim on this
-          page is worse for a deal than an honest "in progress."
-        </Callout>
+      <div id="security" className="grid gap-6 sm:grid-cols-2">
+        {BLOCKS.map((b) => (
+          <div key={b.h} data-brand={b.brand} className="flex flex-col gap-3 rounded border border-rule border-l-[3px] border-l-accent bg-surface p-5">
+            <h2 className="font-display text-lg font-semibold text-ink">{b.h}</h2>
+            <ul className="flex flex-col gap-2 text-sm text-ink-2">
+              {b.items.map((i) => (
+                <li key={i}>{i}</li>
+              ))}
+            </ul>
+            <a href={b.more.href} className="mt-auto w-fit font-mono text-xs font-medium text-accent hover:underline">
+              {b.more.label} →
+            </a>
+          </div>
+        ))}
       </div>
 
-      <div className="flex flex-col gap-4">
-        <h3 className="font-display text-lg font-semibold text-ink">Certifications</h3>
-        <div className="flex flex-wrap gap-2">
-          <Badge tone="neutral">ISO 27001 — not yet started</Badge>
-          <Badge tone="neutral">SOC 2 — not yet started</Badge>
-        </div>
-        <p className="max-w-measure text-sm text-ink-2">
-          {/* TODO: replace with real status and, once true, a target date. A credible roadmap is a stronger sales asset than silence. */}
-          Update these as soon as either process begins, with a target date if there is one.
-        </p>
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div className="flex flex-col gap-2 rounded border border-rule border-l-[3px] border-l-accent bg-surface p-5" data-brand="neev">
-          <h4 className="font-display text-base font-semibold text-ink">Neev</h4>
-          <p className="text-sm text-ink-2">
-            {/* TODO: confirm and state Neev's actual RERA reporting and audit-trail capabilities. */}
-            RERA-relevant reporting and audit trails for booking, collection
-            and inventory records. Detail specifics before publishing.
-          </p>
-        </div>
-        <div className="flex flex-col gap-2 rounded border border-rule border-l-[3px] border-l-accent bg-surface p-5" data-brand="swasthyaconnect">
-          <h4 className="font-display text-base font-semibold text-ink">SwasthyaConnect</h4>
-          <p className="text-sm text-ink-2">
-            {/* TODO: confirm actual ABDM/ABHA integration status before publishing. */}
-            Health-record handling and ABDM/ABHA alignment. State current
-            integration status accurately — "planned" is fine if that's true.
-          </p>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <h3 className="font-display text-lg font-semibold text-ink">Subprocessors &amp; contact</h3>
-        <p className="max-w-measure text-sm text-ink-2">
-          {/* TODO: list real subprocessors (hosting, email, analytics, payments) and a real security contact address. */}
-          List every third party that touches customer data, and a monitored
-          security contact address, once confirmed.
+      <div className="flex max-w-measure flex-col gap-3">
+        <h2 className="font-display text-lg font-semibold text-ink">Certifications and policies</h2>
+        <p className="text-sm text-ink-2">
+          We do not hold ISO 27001 or SOC 2 certification today, and we do not claim one. Our privacy policy, terms and
+          data processing agreement are not published yet; they will appear here when they are ready. If your
+          procurement team needs specifics before then, ask us.
         </p>
       </div>
     </Container>

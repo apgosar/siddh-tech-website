@@ -25,8 +25,9 @@
   --accent-soft: #eaf6f5;
   --accent-ink: #013442;
 
-  --f-display: "Lora", Cambria, Georgia, "Times New Roman", serif;
-  --f-body: "Work Sans", Calibri, "Segoe UI", Arial, sans-serif;
+  --f-display: var(--font-lora), Cambria, Georgia, "Times New Roman", serif;
+  --f-body: var(--font-work-sans), Calibri, "Segoe UI", Arial, sans-serif;
+  --f-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Consolas, monospace;
 }
 
 @media (prefers-color-scheme: dark) {

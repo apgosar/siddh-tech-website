@@ -4,16 +4,17 @@ import { PRODUCTS } from "@siddh/config";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: "The products Siddh Tech Solutions builds and operates.",
+  description: "Neev CMS, a construction management system for real estate developers, and SwasthyaConnect, practice management for clinics: the products Siddh Tech Solutions builds.",
 };
 
 export default function ProductsPage() {
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
+        level={1}
         eyebrow="Products"
-        title="What we build"
-        lede="Each product is run by its own team with its own roadmap. What they share is engineering standards, a security posture, and this firm."
+        title="Two products, two industries"
+        lede="Neev CMS is in live pilot on 2 projects. SwasthyaConnect has 2 clinic partners live. Each has its own site, roadmap and brand."
       />
       <div className="grid gap-5 sm:grid-cols-2">
         {PRODUCTS.map((product) => (

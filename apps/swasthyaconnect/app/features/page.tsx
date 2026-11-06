@@ -5,6 +5,7 @@ import { getProduct } from "@siddh/config";
 const product = getProduct("swasthyaconnect");
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/swasthyaconnect/features" },
   title: "Features",
   description: `Everything ${product.name} handles for your clinic — booking, scheduling, patient communication, records and your digital business card.`,
 };
@@ -138,6 +139,7 @@ export default function FeaturesPage() {
     <Container className="flex flex-col gap-16 py-16 sm:py-20">
       <div className="flex flex-col gap-6">
         <SectionHeading
+        level={1}
           eyebrow="Features"
           title="Every part of your front office, in one platform"
           lede="Booking, scheduling, communication and records — built around how a clinic actually runs its day."

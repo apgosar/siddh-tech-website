@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import { Container, SectionHeading, Badge, Button } from "@siddh/ui";
 import { getProduct } from "@siddh/config";
 
 const product = getProduct("swasthyaconnect");
+
+export const metadata: Metadata = { alternates: { canonical: "/swasthyaconnect" } };
 
 const PROBLEMS = [
   {

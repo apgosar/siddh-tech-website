@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container, SectionHeading, Callout } from "@siddh/ui";
 
 export const metadata: Metadata = {
+  // Placeholder page: kept out of search results (and the sitemap) until it is written.
+  robots: { index: false, follow: true },
   title: "Insights",
   description: "Perspective from Siddh Tech Solutions on AI in operations-heavy industries.",
 };
@@ -13,6 +15,7 @@ export default function InsightsPage() {
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
+        level={1}
         eyebrow="Insights"
         title="What we're learning building for these industries"
         lede="Company-level perspective lives here. Product-specific guides (a RERA checklist, an ABDM readiness guide) belong on each product's own resources section instead."

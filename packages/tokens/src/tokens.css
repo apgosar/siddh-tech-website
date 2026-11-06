@@ -40,6 +40,12 @@
   --accent-soft: var(--corporate-accent-soft);
   --accent-ink: var(--corporate-accent-ink);
 
+  /* call-to-action — primary buttons and the header CTA. Defaults to the ink/surface
+     inversion; a brand with a real accent button (Neev's gold) overrides these three. */
+  --cta: var(--ink);
+  --cta-hover: var(--ink-2);
+  --on-cta: var(--surface);
+
   /* type */
   --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;

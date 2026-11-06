@@ -7,6 +7,7 @@ import { sendDemoRequest } from "../../lib/mail";
 const product = getProduct("swasthyaconnect");
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/swasthyaconnect/demo" },
   title: "Book a demo",
   description: `Book a free, no-obligation walkthrough of ${product.name} tailored to your clinic.`,
 };
@@ -57,6 +58,7 @@ export default async function DemoPage({
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
+        level={1}
         eyebrow="Let's talk"
         title="Let's modernize your practice"
         lede="See SwasthyaConnect in action — book a walkthrough tailored to your clinic and find out how much time it can give back to your day."

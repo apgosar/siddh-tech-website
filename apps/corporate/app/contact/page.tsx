@@ -40,6 +40,7 @@ export default async function ContactPage({
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
+        level={1}
         eyebrow="Contact"
         title="Talk to us"
         lede="Tell us which product you're interested in, or just say hello — a person reads every message here."

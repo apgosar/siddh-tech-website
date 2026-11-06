@@ -19,10 +19,10 @@ export interface Product {
 export const PRODUCTS: Product[] = [
   {
     id: "neev",
-    name: "Neev",
-    tagline: "Construction and sales management, in one system.",
+    name: "Neev CMS",
+    tagline: "Accelerate your cash flow. Never chase a payment again.",
     description:
-      "Neev Construction Management System runs the full cycle from land and lead to sale and possession for real estate developers and contractors.",
+      "Neev CMS is a construction management system for real estate developers: live inventory, milestone billing, collections, documents, PAN and Aadhaar reading and a log of every message. In live pilot on 2 projects.",
     status: "live",
     slug: "neev",
   },

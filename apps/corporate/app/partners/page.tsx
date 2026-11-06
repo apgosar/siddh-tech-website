@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container, SectionHeading, Button, Callout } from "@siddh/ui";
 
 export const metadata: Metadata = {
+  // Placeholder page: kept out of search results (and the sitemap) until it is written.
+  robots: { index: false, follow: true },
   title: "Partners",
   description: "Reseller and implementation partnerships with Siddh Tech Solutions.",
 };
@@ -10,6 +12,7 @@ export default function PartnersPage() {
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
+        level={1}
         eyebrow="Partners"
         title="Implementation and reseller partners"
         lede="We're early — this program isn't formalized yet, but we're open to conversations with firms already embedded with real estate developers or clinics."

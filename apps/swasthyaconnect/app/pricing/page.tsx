@@ -5,6 +5,7 @@ import { getProduct } from "@siddh/config";
 const product = getProduct("swasthyaconnect");
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/swasthyaconnect/pricing" },
   title: "Pricing",
   description: `Simple, transparent introductory pricing for ${product.name} clinic partners.`,
 };
@@ -22,6 +23,7 @@ export default function PricingPage() {
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
+        level={1}
         eyebrow="Investment"
         title="Simple, transparent pricing"
         lede="Introductory rates for clinics that come on board early."

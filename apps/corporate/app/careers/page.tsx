@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Container, SectionHeading, Callout } from "@siddh/ui";
 
 export const metadata: Metadata = {
+  // Placeholder page: kept out of search results (and the sitemap) until it is written.
+  robots: { index: false, follow: true },
   title: "Careers",
   description: "Open roles at Siddh Tech Solutions.",
 };
@@ -13,6 +15,7 @@ export default function CareersPage() {
   return (
     <Container className="flex flex-col gap-10 py-16 sm:py-20">
       <SectionHeading
+        level={1}
         eyebrow="Careers"
         title="Work on software that runs real operations"
         lede="We're a small team building two live products with real customers. If that's interesting, reach out even without a listed role."

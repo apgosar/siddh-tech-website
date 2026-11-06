@@ -3,7 +3,7 @@ import type { AnchorHTMLAttributes } from "react";
 type ButtonVariant = "primary" | "secondary" | "ghost";
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: "bg-ink text-surface hover:bg-ink-2",
+  primary: "bg-cta text-on-cta hover:bg-cta-hover",
   secondary: "border border-rule-strong text-ink hover:border-accent hover:text-accent",
   ghost: "text-ink-2 hover:text-ink",
 };

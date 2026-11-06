@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Self-hosted faces from next/font (see layout.tsx); the shared tokens name the families, these point at the files. */
+:root {
+  --f-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --f-body: var(--font-source-serif), Georgia, "Times New Roman", serif;
+  --f-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+
 @layer base {
   body {
     background-color: var(--ground);

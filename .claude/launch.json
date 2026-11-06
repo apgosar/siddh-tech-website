@@ -4,8 +4,20 @@
     {
       "name": "swasthyaconnect",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev:swasthyaconnect"],
+      "runtimeArgs": [
+        "run",
+        "dev:swasthyaconnect"
+      ],
       "port": 3002
+    },
+    {
+      "name": "neev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:neev"
+      ],
+      "port": 3001
     }
   ]
 }
